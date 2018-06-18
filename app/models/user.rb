@@ -9,8 +9,10 @@ class User < ApplicationRecord
 	validates_email_format_of :email, message: 'The e-mail format is not correct!'
 	validates :username, :password, format: { with: /\A[0-9a-zA-Z_.\-]+\Z/, message: "Only alphanumeric characters, and -_."}
 	validates :username, length: {maximum: 30}
+	validates :avatar, allow_blank: true,format: {with: %r{\.jpg|png}i,	message: 'Accepted formats are: png or jpg'}
 
 	before_create {self.email = email.downcase}
 	before_create {self.username = username.downcase}
+
 
 end
