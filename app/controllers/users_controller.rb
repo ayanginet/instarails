@@ -22,12 +22,16 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user = User.
 	end
 
 	def update
 	end
 
 	def destroy
+		@user = User.find[params[:id]]
+		@user.destroy
+		redirect_to @users
 	end
 
 	private
